@@ -1,11 +1,21 @@
 import './App.css'
+import Clock from './components/Clock'
+import Weather from './components/Weather'
+import Speed from './components/Speed'
+import Control from './components/Control'
+import './assets/all.min.css' 
+
+
 
 function App() {
 
   return (
-    <>
-      react
-    </>
+    <div className='app'>
+      <Clock/>
+      <Weather/>
+      <Speed/>
+      <Control/>
+    </div>
   )
 }
 
