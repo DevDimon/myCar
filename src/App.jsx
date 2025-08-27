@@ -3,8 +3,6 @@ import Clock from './components/Clock'
 import Weather from './components/Weather'
 import Speed from './components/Speed'
 import Control from './components/Control'
-import './assets/all.min.css' 
-
 
 
 function App() {

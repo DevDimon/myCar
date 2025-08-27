@@ -1,6 +1,7 @@
 import Button from "./ui/Button";
 
 function Control() {
+    console.log('control');
     return (
         <div className="control">
             <Button icon="fa-volume-up"/>
