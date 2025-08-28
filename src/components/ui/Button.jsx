@@ -1,10 +1,9 @@
-function Button({icon}) {
+function Button({icon, handle}) {
     const classCss = `fas ${icon}`;
 
     return (
-        <button>
+        <button type="button" onClick={handle}>
             <i className={classCss}></i>
-            {/* <FontAwesomeIcon icon={["fas", "volume-up"]} /> */}
         </button>
     )
 }

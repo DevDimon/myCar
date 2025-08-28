@@ -1,10 +1,18 @@
+import { useState } from "react";
 import Button from "./ui/Button";
 
 function Control() {
-    console.log('control');
+    const [isSound, setIsSound] = useState(true);
+
+    const handleIsSound = () => {
+        console.log('kakak')
+        setIsSound(!isSound);
+    }
+
+
     return (
         <div className="control">
-            <Button icon="fa-volume-up"/>
+            <Button icon={isSound ? 'fa-volume-up' : 'fa-volume-mute'} handle={handleIsSound}/>
             <Button icon="fa-cog"/>
         </div>
     )
