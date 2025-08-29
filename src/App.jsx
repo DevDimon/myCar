@@ -2,8 +2,9 @@ import './App.css'
 import Clock from './components/Clock'
 import Weather from './components/Weather'
 import Speed from './components/Speed'
-import Control from './components/Control'
+import Button from './components/ui/Button'
 import { useEffect, useState } from 'react'
+import Settings from './components/Settings'
 
 
 function App() {
@@ -14,6 +15,15 @@ function App() {
 
   const [speed, setSpeed] = useState(0);
   const [status, setStatus] = useState('Ожидание данных о местоположении...');
+  const [isSound, setIsSound] = useState(true);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+
+  const handleIsSound = () => {
+    setIsSound(!isSound);
+  }
+
+
+
 
   const requestWakeLock = () => {
     if ('wakeLock' in navigator) {
@@ -78,16 +88,21 @@ function App() {
     return (() => {
       document.body.removeEventListener('click', requestFullscreen);
     })
-});
+  });
 
-return (
-  <div className='app'>
-    <Clock />
-    <Weather />
-    <Speed speed={speed} status={status} />
-    <Control />
-  </div>
-)
+
+  return (
+    <div className='app'>
+      <Clock />
+      <Weather />
+      <Speed speed={speed} status={status} />
+      <div className="control">
+        <Button icon={isSound ? 'fa-volume-up' : 'fa-volume-mute'} handle={handleIsSound} />
+        <Button icon="fa-cog" handle={setSettingsOpen} />
+      </div>
+      {settingsOpen && <Settings />}
+    </div>
+  )
 }
 
 export default App
