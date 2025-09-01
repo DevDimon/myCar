@@ -228,7 +228,7 @@ input[type=range i]::-webkit-slider-runnable-track {
 }
 
 input[type="checkbox"] {
-    display: none; /
+    display: none; 
 }
 
 .custom-checkbox {

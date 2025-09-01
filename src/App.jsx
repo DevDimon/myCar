@@ -5,25 +5,24 @@ import Speed from './components/Speed'
 import Button from './components/ui/Button'
 import { useEffect, useState } from 'react'
 import Settings from './components/Settings'
-
+import {loadSettingsFromLS} from './utils'
 
 function App() {
+  const settings = loadSettingsFromLS();
+  console.log(settings)
 
-  const GEO_TIMEOUT = 5000;
+  const GEO_TIMEOUT = settings.GEO_TIMEOUT;
   let wakeLock = null;
   let watchId;
 
   const [speed, setSpeed] = useState(0);
   const [status, setStatus] = useState('Ожидание данных о местоположении...');
-  const [isSound, setIsSound] = useState(true);
+  const [isSound, setIsSound] = useState(settings.IS_SOUND_ENABLED);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   const handleIsSound = () => {
     setIsSound(!isSound);
   }
-
-
-
 
   const requestWakeLock = () => {
     if ('wakeLock' in navigator) {
@@ -39,8 +38,19 @@ function App() {
   }
 
   const requestFullscreen = () => {
-    if (document.documentElement.requestFullscreen) {
-      document.documentElement.requestFullscreen();
+    // if (document.documentElement.requestFullscreen) {
+    //   document.documentElement.requestFullscreen();
+    // }
+    const element = document.documentElement;
+    
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) { /* Firefox */
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) { /* Chrome, Safari */
+      element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) { /* IE/Edge */
+      element.msRequestFullscreen();
     }
   }
 
@@ -83,13 +93,22 @@ function App() {
     };
     requestWakeLock();
 
-    document.body.addEventListener('click', requestFullscreen);
+    const handleBodyClick = () => {
+      requestFullscreen();
+    };
+
+    console.log('useEffect')
+
+    document.body.addEventListener('click', handleBodyClick);
 
     return (() => {
-      document.body.removeEventListener('click', requestFullscreen);
+      document.body.removeEventListener('click', handleBodyClick);
     })
-  });
+  }, []);
 
+  const settingsClose = () => {
+    setSettingsOpen(false);
+  }
 
   return (
     <div className='app'>
@@ -100,7 +119,7 @@ function App() {
         <Button icon={isSound ? 'fa-volume-up' : 'fa-volume-mute'} handle={handleIsSound} />
         <Button icon="fa-cog" handle={setSettingsOpen} />
       </div>
-      {settingsOpen && <Settings />}
+      {settingsOpen && <Settings handleClose={settingsClose} />}
     </div>
   )
 }
