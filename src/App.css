@@ -18,7 +18,7 @@ body {
 }
 
 .buttonsContainer {
-    width: 85%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     gap: 30px;
