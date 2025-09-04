@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { loadSettingsFromLS, saveSettingsToLS } from '../utils'
 
 
-function Settings({ handleClose }) {
+function Settings({}) {
 
     const speedRef = useRef(null);
     const timeoutRef = useRef(null);
@@ -47,7 +47,6 @@ function Settings({ handleClose }) {
             GEO_TIMEOUT: timeoutValue * 1000,
         };
         saveSettingsToLS(appSettings);
-        handleClose();
     }
 
 
@@ -76,9 +75,6 @@ function Settings({ handleClose }) {
                     <div className="settings-buttons">
                         <button type="button" className="button-settings" onClick={saveHandler}>
                             <i className="fas fa-save"></i>
-                        </button>
-                        <button type="button" id="closeSettings" className="button-settings" onClick={handleClose}>
-                            <i className="fas fa-close"></i>
                         </button>
                     </div>
                 </div>

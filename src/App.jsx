@@ -21,11 +21,11 @@ function App() {
     return (
         <div className='buttonsContainer'>
             {mode == 'Меню' &&
-                <>
+                <div className='bigButtonContainer'>
                     <BigButton icon='fa-car' title='Поездка' subtitle='Дата, время, погода, скорость' onClick={handleRun} />
                     <BigButton icon='fa-list-check' title='События' subtitle='Заправки, замены деталей, обслуживание' onClick={() => handleMode('События')} />
                     <BigButton icon='fa-cog' title='Настройки' subtitle='Скорость, звук и прочее' onClick={() => handleMode('Настройки')} />
-                </>
+                </div>
             }
             {mode != 'Меню' && <GoBack title={mode} onClick={() => setMode('Меню')} />}
             {mode == 'Поездка' && <Run />}

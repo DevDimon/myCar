@@ -2,8 +2,8 @@ import './GoBack.css'
 
 function GoBack({title, onClick}) {
     return (
-        <div className='goBack' onClick = {onClick}>
-            <div className="goBackIcon">
+        <div className='goBack'>
+            <div className="goBackIcon" onClick = {onClick}>
                 <i className="fas fa-arrow-left"></i>
             </div>
             <div className="goBackTitle">

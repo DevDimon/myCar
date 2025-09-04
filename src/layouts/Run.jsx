@@ -4,7 +4,7 @@ import Weather from '../components/Weather'
 import Speed from '../components/Speed'
 import Button from '../components/ui/Button'
 import { useEffect, useState } from 'react'
-import Settings from '../components/Settings'
+// import Settings from '../components/Settings'
 import {loadSettingsFromLS} from '../utils'
 
 function Run() {
@@ -117,9 +117,9 @@ function Run() {
       <Speed speed={speed} status={status} />
       <div className="control">
         <Button icon={isSound ? 'fa-volume-up' : 'fa-volume-mute'} handle={handleIsSound} />
-        <Button icon="fa-cog" handle={setSettingsOpen} />
+        {/* <Button icon="fa-cog" handle={setSettingsOpen} /> */}
       </div>
-      {settingsOpen && <Settings handleClose={settingsClose} />}
+      {/* {settingsOpen && <Settings handleClose={settingsClose} />} */}
     </div>
   )
 }
