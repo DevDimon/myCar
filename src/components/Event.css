@@ -1,0 +1,72 @@
+.events {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    height: 100vh;
+}
+
+.event {
+    /* height: 120px; */
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: black;
+    border: 2px solid black;
+    background-color: white;
+    border-radius: 5px;
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+}
+
+.event-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: center;
+}
+
+.event-left i {
+    font-size: 48px;
+    padding-bottom: 10px;
+}
+
+.event-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.event-date {
+
+}
+
+.event-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.event-description {
+    font-size: 18px;
+}
+
+.event-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.event-mileage {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.event-sum {
+    font-weight: bold;
+    font-size: 20px;
+}

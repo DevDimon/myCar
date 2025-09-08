@@ -11,7 +11,6 @@ function App() {
 
     const handleMode = (currentMode) => {
         setMode(currentMode);
-        console.log(currentMode);
     }
 
     const handleRun = () => {

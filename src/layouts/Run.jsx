@@ -5,10 +5,10 @@ import Speed from '../components/Speed'
 import Button from '../components/ui/Button'
 import { useEffect, useState } from 'react'
 // import Settings from '../components/Settings'
-import {loadSettingsFromLS} from '../utils'
+import { loadSettingsFromLS } from '../utils'
 
 function Run() {
-  const settings = loadSettingsFromLS();
+  let settings = loadSettingsFromLS();
   console.log(settings)
 
   const GEO_TIMEOUT = settings.GEO_TIMEOUT;
@@ -42,7 +42,7 @@ function Run() {
     //   document.documentElement.requestFullscreen();
     // }
     const element = document.documentElement;
-    
+
     if (element.requestFullscreen) {
       element.requestFullscreen();
     } else if (element.mozRequestFullScreen) { /* Firefox */
@@ -58,7 +58,11 @@ function Run() {
     const currentSpeed = position.coords.speed;
 
     if (currentSpeed !== null) {
-      setSpeed(Math.round(currentSpeed * 3.6));
+      const roundedSpeed = Math.round(currentSpeed * 3.6);
+      setSpeed(roundedSpeed);
+
+      const isOverSpeedLimit = roundedSpeed >= settings.SPEED_LIMIT;
+      document.body.style.backgroundColor = isOverSpeedLimit ? 'red' : 'green';
     } else {
       setStatus('Данные о скорости недоступны');
     }
@@ -84,10 +88,12 @@ function Run() {
   }
 
   useEffect(() => {
+    settings = loadSettingsFromLS();
+
     if ('geolocation' in navigator) {
       watchId = navigator.geolocation.watchPosition(handlePosition, handleError, {
         enableHighAccuracy: true,
-        timeout: GEO_TIMEOUT,
+        timeout: settings.GEO_TIMEOUT,
         maximumAge: 0,
       })
     };
