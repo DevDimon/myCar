@@ -29,7 +29,6 @@ function Event({ event }) {
                     <div className="event-sum">{event.sum} руб.</div>
                 </div>
             </div>
-
         </div>
     )
 }
