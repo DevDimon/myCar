@@ -1,11 +1,12 @@
 import "./Event.css"
+import types from "../types/eventTypes"
 
-const types =
-    [
-        { 'title': 'Заправка', 'icon': 'fas fa-gas-pump' },
-        { 'title': 'Ремонт', 'icon': 'fas fa-screwdriver-wrench' },
-        { 'title': 'Замена', 'icon': 'fas fa-retweet' }
-    ];
+// const types =
+//     [
+//         { 'title': 'Заправка', 'icon': 'fas fa-gas-pump' },
+//         { 'title': 'Ремонт', 'icon': 'fas fa-screwdriver-wrench' },
+//         { 'title': 'Замена', 'icon': 'fas fa-retweet' }
+//     ];
 
 function Event({ event }) {
     return (
