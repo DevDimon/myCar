@@ -3,4 +3,41 @@
     flex-direction: column;
     justify-content: center;
     height: 100vh;
+    gap: 15px;
+    font-size: 20px;
+}
+
+.data-edit-event input {
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+    width: 100%;
+}
+
+.form-edit-event select {
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+    width: 50%;
+}
+
+.description-edit-event textarea {
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+    width: 100%;
+}
+
+.mileage-edit-event input {
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+    width: 100%;
+}
+
+.sum-edit-event input {
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+    width: 100%;
 }
